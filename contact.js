@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const formData = new FormData(form);
         const data = Object.fromEntries(formData.entries());
         try {
-            const response = await fetch("https://patient-soundtrack-romantic-leonard.trycloudflare.com/contact", {
+            const response = await fetch("https://hierarchy-attractive-foods-favor.trycloudflare.com /contact", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(data)
