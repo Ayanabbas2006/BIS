@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gallery - Bajrang International School</title>
+
+    <style>
+        html,
+        body {
+            height: 100%;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+        
+        body {
+            background: #f7f7f7;
+            display: flex;
+            flex-direction: column;
+        }
+        /* HEADER */
+        
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4rem;
+            display: flex;
+            align-items: center;
+            padding: 0 1rem;
+            background: rgb(119, 43, 43);
+            z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        .menu-btn {
+            font-size: 1.8rem;
+            background: none;
+            border: none;
+            color: rgb(255, 255, 255);
+            cursor: pointer;
+        }
+        
+        .top-text {
+            color: white;
+            font-size: 1.6rem;
+            font-weight: bold;
+            text-align: center;
+        }
+        
+        header img {
+            height: 40px
+        }
+        
+        .header-center {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        /* DRAWER */
+        
+        .drawer-img {
+            height: 100px;
+            width: auto;
+            display: block;
+            margin: 0 auto 1rem;
+        }
+        
+        .drawer {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 260px;
+            height: 100vh;
+            background: rgb(119, 43, 43);
+            transform: translateX(-100%);
+            transition: 0.3s ease;
+            z-index: 1001;
+        }
+        
+        .drawer.open {
+            transform: translateX(0)
+        }
+        
+        .nav {
+            display: flex;
+            flex-direction: column;
+            padding-top: 2rem;
+        }
+        
+        .nav a {
+            color: white;
+            text-decoration: none;
+            padding: 1rem;
+            text-align: center;
+            border-top: 1px solid rgba(255, 255, 255, 0.3);
+        }
+        
+        .nav .active {
+            color: rgb(82, 31, 31);
+            background-color: rgb(205, 205, 205);
+        }
+        
+        .nav a:hover {
+            color: white;
+            background-color: rgb(77, 29, 29);
+        }
+        /* SECTION TITLE */
+        
+        main {
+            flex: 1;
+        }
+        
+        .section-title {
+            text-align: center;
+            font-size: 1.8rem;
+            margin: 30px 0 15px;
+            color: rgb(119, 43, 43);
+        }
+        /* ================= IMAGES ================= */
+        
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            gap: 15px;
+            padding: 20px;
+            max-width: 1300px;
+            margin: auto;
+        }
+        /* FIX ALL IMAGE SHAPES */
+        
+        .gallery-item {
+            width: 100%;
+            aspect-ratio: 4 / 3;
+            /* Force same size */
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: fill;
+            /* Fits vertical & horizontal perfectly */
+        }
+        
+        .gallery-item:hover {
+            transform: scale(1.05);
+        }
+        /* ================= VIDEO ================= */
+        
+        .video-section {
+            display: flex;
+            justify-content: center;
+            padding: 20px;
+        }
+        
+        .video-box {
+            width: 90%;
+            max-width: 900px;
+            /* BIG video */
+            border-radius: 14px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+        
+        .video-box video,
+        .video-box iframe {
+            width: 100%;
+            height: 500px;
+            border: none;
+        }
+        /* FOOTER */
+        
+        footer {
+            background: rgb(119, 43, 43);
+            color: white;
+            text-align: center;
+            padding: 10px;
+            margin-top: auto;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <div class="header-left">
+            <button class="menu-btn" id="menuBtn">☰</button>
+            <p class="top-text header-center"> 📸 School Gallery</p>
+        </div>
+        <div class="drawer" id="navMenu">
+            <nav class="nav">
+                <img class="drawer-img" src="only_logo.png" src="logo">
+                <a href="home.html">Home</a>
+                <a href="aboutus.html">About</a>
+                <a href="register.html">Register</a>
+                <a href="contact.html">Contact</a>
+            </nav>
+        </div>
+    </header>
+    <main>
+        <!-- ================= PHOTOS ================= -->
+        <h2 class="section-title">Photo Gallery</h2>
+
+        <div class="gallery-grid">
+
+            <div class="gallery-item"><img src="school3.jpeg"></div>
+            <div class="gallery-item"><img src="school2.jpeg"></div>
+            <div class="gallery-item"><img src="school4.jpeg"></div>
+            <div class="gallery-item"><img src="sports2.jpeg"></div>
+            <div class="gallery-item"><img src="school5.jpeg"></div>
+            <div class="gallery-item"><img src="school6.jpeg"></div>
+            <div class="gallery-item"><img src="school7.jpeg"></div>
+        </div>
+
+
+        <!-- ================= BIG VIDEO ================= -->
+        <h2 class="section-title">School Video</h2>
+
+        <div class="video-section">
+            <div class="video-box">
+
+                <!-- Local Video -->
+                <video controls>
+            <source src="school_ved.mp4" type="video/mp4">
+        </video>
+
+            </div>
+        </div>
+    </main>
+    <footer>
+        Bajrang International School © 2026
+    </footer>
+    <script>
+        const btn = document.getElementById("menuBtn");
+        const menu = document.getElementById("navMenu");
+
+        btn.onclick = () => menu.classList.toggle("open");
+        document.addEventListener("click", (e) => {
+            if (!menu.contains(e.target) && !btn.contains(e.target)) {
+                menu.classList.remove("open");
+            };
+        });
+    </script>
+</body>
+
+</html>

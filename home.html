@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<meta charset="UTF-8">
+<html lang="en">
+>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bajrang International School</title>
+
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: Arial, sans-serif;
+    }
+    
+    body {
+        background: #f2f4f8;
+    }
+    /* HEADER */
+    
+    header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 4rem;
+        display: flex;
+        align-items: center;
+        padding: 0 1rem;
+        background: #fff;
+        z-index: 1000;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+    
+    .header-left {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+    }
+    
+    .menu-btn {
+        font-size: 1.8rem;
+        background: none;
+        border: none;
+        color: rgb(119, 43, 43);
+        cursor: pointer;
+    }
+    
+    header img {
+        height: 40px
+    }
+    /* DRAWER */
+    
+    .drawer-img {
+        height: 100px;
+        width: auto;
+        display: block;
+        margin: 0 auto 1rem;
+    }
+    
+    .drawer {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 260px;
+        height: 100vh;
+        background: rgb(119, 43, 43);
+        transform: translateX(-100%);
+        transition: 0.3s ease;
+        z-index: 1001;
+    }
+    
+    .drawer.open {
+        transform: translateX(0)
+    }
+    
+    .nav {
+        display: flex;
+        flex-direction: column;
+        padding-top: 2rem;
+    }
+    
+    .nav a {
+        color: white;
+        text-decoration: none;
+        padding: 1rem;
+        text-align: center;
+        border-top: 1px solid rgba(255, 255, 255, 0.3);
+    }
+    
+    .nav .active {
+        color: rgb(82, 31, 31);
+        background-color: rgb(205, 205, 205);
+    }
+    
+    .nav a:hover {
+        color: white;
+        background-color: rgb(77, 29, 29);
+    }
+    /* MAIN */
+    
+    .body {
+        position: relative;
+        padding-top: 4rem;
+        overflow-y: auto;
+    }
+    /* HERO */
+    
+    .hero {
+        min-height: 420px;
+        background: url("school.jpeg") center/cover no-repeat;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 2rem 1rem;
+    }
+    
+    .heading {
+        padding: 1.5rem;
+    }
+    
+    .cta {
+        text-align: center;
+        max-width: 600px;
+        background: rgba(0, 0, 0, 0.45);
+        padding: 2rem;
+        border-radius: 12px;
+        color: white;
+    }
+    
+    .ctabtn {
+        background: rgb(119, 43, 43);
+        color: white;
+        border: none;
+        padding: 1rem 2rem;
+        font-size: 1.1rem;
+        border-radius: 6px;
+        cursor: pointer;
+    }
+    /* FEATURES */
+    
+    .info {
+        background: rgb(119, 43, 43);
+        padding: 2rem 1rem;
+    }
+    
+    .feature-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 16px;
+    }
+    /* FEATURE CARDS */
+    
+    .feature-card {
+        aspect-ratio: 1/1;
+        border-radius: 14px;
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+        /* important to crop images */
+        cursor: pointer;
+        transition: 0.3s;
+        max-width: 400px;
+        margin: 0 auto;
+    }
+    
+    span {
+        color: white;
+    }
+    
+    .feature-card:hover {
+        transform: scale(1.05);
+        box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
+    }
+    
+    .feature-card img {
+        width: 100%;
+        height: 100%;
+        background-color: rgb(119, 43, 43);
+        object-fit: cover;
+        border-top-left-radius: 14px;
+        border-top-right-radius: 14px;
+    }
+    
+    .feature-card span {
+        flex: 1;
+        display: flex;
+        background-color: rgb(20, 70, 39);
+        align-items: center;
+        justify-content: center;
+        font-weight: bold;
+        font-size: 1rem;
+        padding: 0.5rem;
+        text-align: center;
+    }
+    /* TEXT */
+    
+    .text,
+    .about {
+        background: rgb(119, 43, 43);
+        color: white;
+        padding: 2rem 1rem;
+        text-align: center;
+    }
+    /* ===================== */
+    /* CAROUSEL – FIXED */
+    /* ===================== */
+    
+    .carousel {
+        display: flex;
+        gap: 24px;
+        padding: 50px 10px;
+        /* reduce side padding */
+        overflow-x: auto;
+        background: rgb(119, 43, 43);
+        scroll-snap-type: x mandatory;
+        scroll-behavior: smooth;
+        cursor: grab;
+        scrollbar-color: rgb(119, 43, 43);
+        /* show grab on desktop */
+    }
+    
+    .carousel:active {
+        cursor: grabbing;
+    }
+    
+    .carousel .card {
+        flex: 0 0 auto;
+        width: 360px;
+        height: 360px;
+        border-radius: 16px;
+        opacity: 1;
+        transform: scale(0.85);
+        transition: 0.4s ease;
+        scroll-snap-align: center;
+        user-select: none;
+        scrollbar-color: rgb(119, 43, 43);
+        /* prevent text/image selection while dragging */
+    }
+    
+    .carousel img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 16px;
+        display: block;
+    }
+    /* ===================== */
+    /* MOBILE FIX */
+    /* ===================== */
+    
+    @media(max-width:768px) {
+        .feature-grid {
+            grid-template-columns: 1fr;
+        }
+        feature-card span {
+            background-color: rgb(20, 70, 39);
+        }
+        /* FEATURE CARDS */
+        .feature-card {
+            background: rgb(20, 70, 39);
+            aspect-ratio: 1/1;
+            border-radius: 14px;
+            display: flex;
+            flex-direction: column;
+            /* stack image + text */
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            transition: 0.3s;
+            overflow: hidden;
+            /* important to crop images */
+            text-align: center;
+        }
+        .feature-card img {
+            width: 100%;
+            /* smaller to fit nicely */
+            height: 100%;
+            object-fit: cover;
+            border-radius: 12px;
+            margin-bottom: 8px;
+        }
+        /* CAROUSEL CARDS (already mostly correct) */
+        .carousel .card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 16px;
+            display: block;
+        }
+        .carousel {
+            padding: 30px 1rem;
+        }
+        .carousel .card {
+            width: 240px;
+            height: 240px;
+            opacity: 1;
+            transform: scale(1);
+        }
+        .carousel .card.active {
+            transform: scale(1);
+        }
+    }
+    
+    @media(min-width:768px) {
+        .carousel .card.active {
+            opacity: 1;
+            transform: scale(1);
+        }
+        .carousel .card {
+            width: 240px;
+            height: 240px;
+            opacity: 1;
+            transform: scale(1);
+        }
+    }
+</style>
+</head>
+
+<body>
+
+    <header>
+        <div class="header-left">
+            <button class="menu-btn" id="menuBtn">☰</button>
+            <img src="bg_removed_logo.png">
+        </div>
+        <div class="drawer" id="navMenu">
+            <nav class="nav">
+                <img class="drawer-img" src="only_logo.png" src="logo">
+                <a class="active">Home</a>
+                <a href="aboutus.html">About</a>
+                <a href="register.html">Register</a>
+                <a href="contact.html">Contact</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="body">
+
+        <div class="hero">
+            <div class="cta">
+                <h1 class="heading">Welcome to Bajrang International School</h1>
+                <a href="register.html"><button class="ctabtn">Register Now</button></a>
+            </div>
+        </div>
+
+        <div class="info">
+            <div class="feature-grid">
+                <div class="feature-card" onclick="location.href='gallery.html'">
+                    <img src="academics.webp" alt="Academics">
+                    <span>Academics</span>
+                </div>
+
+                <div class="feature-card" onclick="location.href='gallery.html'">
+                    <img src="infrastructure.webp" alt="Infrastructure">
+                    <span>Infrastructure</span>
+                </div>
+
+                <div class="feature-card" onclick="location.href='gallery.html'">
+                    <img src="faculty.webp" alt="Faculty">
+                    <span>Faculty</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="text">
+            <h3>Start Your Bright Future Here</h3>
+            World-class education with strong values.
+        </div>
+
+        <section class="carousel" id="cardTrack">
+            <div class="card"><img src="school2.jpeg"></div>
+            <div class="card"><img src="sports2.jpeg"></div>
+            <div class="card"><img src="school2.jpeg"></div>
+        </section>
+
+        <div class="about" id="about">
+            <h1>About Us</h1>
+            <p>At Bajrang International School, we believe that every child is gifted with unique abilities waiting to be nurtured. Our mission is to create a joyful, safe, and inspiring learning environment where children grow academically, emotionally,
+                and socially. With a balanced blend of modern education and strong traditional values, we shape young learners into confident, responsible, and compassionate individuals.</p>
+        </div>
+    </main>
+    <script>
+        const btn = document.getElementById("menuBtn");
+        const menu = document.getElementById("navMenu");
+
+        btn.onclick = () => menu.classList.toggle("open");
+        document.addEventListener("click", (e) => {
+            if (!menu.contains(e.target) && !btn.contains(e.target)) {
+                menu.classList.remove("open");
+            }
+        });
+        // Update active card based on center
+        const track = document.getElementById("cardTrack");
+        const cards = document.querySelectorAll(".carousel .card");
+
+        function updateActiveCard() {
+            const center = track.scrollLeft + track.offsetWidth / 2;
+            let closest = null;
+            let min = Infinity;
+
+            cards.forEach(card => {
+                const cardCenter = card.offsetLeft + card.offsetWidth / 2;
+                const dist = Math.abs(center - cardCenter);
+                if (dist < min) {
+                    min = dist;
+                    closest = card;
+                }
+            });
+
+            cards.forEach(c => c.classList.remove("active"));
+            if (closest) closest.classList.add("active");
+        }
+
+        // Mouse drag support for desktop
+        let isDown = false;
+        let startX;
+        let scrollLeft;
+
+        track.addEventListener("mousedown", (e) => {
+            isDown = true;
+            track.classList.add("active");
+            startX = e.pageX - track.offsetLeft;
+            scrollLeft = track.scrollLeft;
+        });
+        track.addEventListener("mouseleave", () => {
+            isDown = false;
+            track.classList.remove("active");
+        });
+        track.addEventListener("mouseup", () => {
+            isDown = false;
+            track.classList.remove("active");
+        });
+        track.addEventListener("mousemove", (e) => {
+            if (!isDown) return;
+            e.preventDefault();
+            const x = e.pageX - track.offsetLeft;
+            const walk = (x - startX) * 1; // scroll-fast multiplier
+            track.scrollLeft = scrollLeft - walk;
+        });
+
+        // Update active on scroll
+        track.addEventListener("scroll", () => {
+            requestAnimationFrame(updateActiveCard);
+        });
+
+        updateActiveCard();
+    </script>
+
+</body>
+
+</html>

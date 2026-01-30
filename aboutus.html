@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        /* BODY */
+        
+        body {
+            background: #f9f9f9;
+            color: #333;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        /* ================= HEADER ================= */
+        
+        header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            background: rgb(158, 41, 41);
+            color: white;
+            padding: 15px 20px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        /* Menu Button */
+        
+        .menu-btn {
+            font-size: 1.8rem;
+            background: none;
+            border: none;
+            color: white;
+            cursor: pointer;
+        }
+        /* Header Text */
+        
+        header h1 {
+            font-size: 1.8rem;
+        }
+        
+        header h4 {
+            color: white;
+            font-weight: normal;
+        }
+        /* ================= DRAWER ================= */
+        
+        .drawer {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 260px;
+            height: 100vh;
+            background: rgb(119, 43, 43);
+            transform: translateX(-100%);
+            transition: 0.3s ease;
+            z-index: 2000;
+        }
+        
+        .drawer.open {
+            transform: translateX(0);
+        }
+        
+        .drawer-img {
+            height: 90px;
+            display: block;
+            margin: 20px auto;
+        }
+        /* Drawer Nav */
+        
+        .nav {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .nav a {
+            color: white;
+            text-decoration: none;
+            padding: 14px;
+            text-align: center;
+            border-top: 1px solid rgba(255, 255, 255, 0.3);
+            transition: 0.2s;
+        }
+        
+        .nav a:hover {
+            background: rgb(77, 29, 29);
+        }
+        
+        .nav .active {
+            background: white;
+            color: rgb(119, 43, 43);
+            font-weight: bold;
+        }
+        /* ================= ABOUT SECTION ================= */
+        
+        main {
+            flex: 1;
+        }
+        
+        .about-section {
+            background: #f9f9f9;
+            padding: 60px 10%;
+        }
+        
+        .about-container {
+            display: flex;
+            gap: 40px;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+        /* Text */
+        
+        .about-text {
+            flex: 1;
+        }
+        
+        .about-text h2 {
+            font-size: 2.2rem;
+            color: rgb(119, 43, 43);
+            margin-bottom: 15px;
+        }
+        
+        .about-text p {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            margin-bottom: 12px;
+        }
+        /* Brochure Button */
+        
+        .brochure-btn {
+            display: inline-block;
+            background: rgb(119, 43, 43);
+            color: white;
+            padding: 12px 20px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: 0.2s;
+        }
+        
+        .brochure-btn:hover {
+            background: black;
+            transform: scale(1.05);
+        }
+        /* Image */
+        
+        .about-img {
+            flex: 1;
+            text-align: center;
+        }
+        
+        .about-img img {
+            width: 100%;
+            max-width: 420px;
+            border-radius: 14px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+        /* ================= FOOTER ================= */
+        
+        footer {
+            background: rgb(158, 41, 41);
+            color: white;
+            text-align: center;
+            margin-top: auto;
+            padding: 15px;
+            font-size: 0.95rem;
+        }
+        /* ================= RESPONSIVE ================= */
+        
+        @media(max-width:768px) {
+            header h1 {
+                font-size: 1.4rem;
+            }
+            .about-container {
+                flex-direction: column;
+                text-align: center;
+            }
+            .about-text h2 {
+                font-size: 1.6rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- HEADER -->
+    <header>
+        <button class="menu-btn" id="menuBtn">☰</button>
+        <div>
+            <h1>About Us</h1>
+            <h4>Know About Us</h4>
+        </div>
+    </header>
+
+    <!-- DRAWER MENU -->
+    <div class="drawer" id="navMenu">
+        <nav class="nav">
+            <img class="drawer-img" src="only_logo.png" alt="Logo">
+            <a href="home.html">Home</a>
+            <a href="#" class="active">About</a>
+            <a href="register.html">Register</a>
+            <a href="contact.html">Contact</a>
+        </nav>
+    </div>
+
+    <!-- ABOUT SECTION -->
+    <section class="about-section">
+        <div class="about-container">
+
+            <div class="about-text">
+                <h2>About Bajrang International School</h2>
+                <p>
+                    Bajrang International School is committed to providing quality education with strong moral values. We focus on academic excellence, discipline, and overall personality development of students.
+                </p>
+                <p>
+                    Our modern infrastructure, experienced faculty, and innovative teaching methods ensure a bright future for every student.
+                </p>
+
+                <a href="bajrangInternationalSchool.pdf" download class="brochure-btn">
+                📥 Download School Brochure
+            </a>
+            </div>
+
+            <div class="about-img">
+                <img src="school2.jpeg" alt="School Image">
+            </div>
+
+        </div>
+    </section>
+
+    <footer>
+        © 2026 Bajrang International School | All Rights Reserved
+    </footer>
+
+    <!-- DRAWER JS -->
+    <script>
+        const menuBtn = document.getElementById("menuBtn");
+        const navMenu = document.getElementById("navMenu");
+
+        menuBtn.onclick = () => {
+            navMenu.classList.toggle("open");
+        };
+
+        // Close drawer when clicking outside
+        document.addEventListener("click", (e) => {
+            if (!navMenu.contains(e.target) && e.target !== menuBtn) {
+                navMenu.classList.remove("open");
+            }
+        });
+    </script>
+
+</body>
+
+</html>

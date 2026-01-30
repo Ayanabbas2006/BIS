@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us</title>
+    <style>
+        html,
+        body {
+            height: 100%;
+        }
+        
+        * {
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+        /* BODY */
+        
+        body {
+            margin: 0;
+            background: #fff9cc;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        main {
+            flex: 1;
+        }
+        /* HEADER */
+        
+        .menu-btn {
+            font-size: 1.8rem;
+            background: none;
+            border: none;
+            padding-right: 2rem;
+            margin: auto 0;
+            color: rgb(255, 255, 255);
+            cursor: pointer;
+        }
+        
+        .drawer-img {
+            height: 100px;
+            width: auto;
+            display: block;
+            margin: 0 auto 1rem;
+        }
+        
+        .drawer {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 260px;
+            height: 100vh;
+            background: rgb(119, 43, 43);
+            transform: translateX(-100%);
+            transition: 0.3s ease;
+            z-index: 1001;
+        }
+        
+        .drawer.open {
+            transform: translateX(0)
+        }
+        
+        .nav {
+            display: flex;
+            flex-direction: column;
+            padding-top: 2rem;
+        }
+        
+        .nav a {
+            color: white;
+            text-decoration: none;
+            padding: 1rem;
+            text-align: center;
+            border-top: 1px solid rgba(255, 255, 255, 0.3);
+        }
+        
+        .nav .active {
+            color: rgb(82, 31, 31);
+            background-color: rgb(205, 205, 205);
+        }
+        
+        .nav a:hover {
+            color: white;
+            background-color: rgb(77, 29, 29);
+        }
+        
+        header {
+            display: flex;
+            background: rgb(158, 41, 41);
+            color: white;
+            flex-shrink: 0;
+            width: 100%;
+            padding-top: 20px;
+            padding-bottom: 20px;
+            text-align: left;
+            gap: 0px;
+            padding-left: 3rem;
+            margin: 0 auto;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        header h1,
+        h4 {
+            margin: auto;
+        }
+        
+        header h1 {
+            font-size: 2rem;
+        }
+        
+        header h4 {
+            color: #ffd900;
+            font-weight: normal;
+        }
+        /* MAIN SECTION */
+        
+        section {
+            display: flex;
+            gap: 2rem;
+            max-width: 1100px;
+            margin: 2rem auto;
+            padding: 1rem;
+            flex-wrap: wrap;
+            align-items: flex-start;
+            justify-content: center;
+        }
+        /* CONTACT FORM */
+        
+        form {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 12px;
+            width: 400px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+        
+        form h3 {
+            color: rgb(158, 41, 41);
+            margin-bottom: 5px;
+        }
+        
+        form p {
+            font-size: 0.9rem;
+            color: #555;
+        }
+        
+        form div {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-top: 10px;
+        }
+        
+        input,
+        textarea {
+            padding: 10px;
+            border-radius: 6px;
+            border: 1px solid #ccc;
+            font-size: 0.9rem;
+            outline: none;
+        }
+        
+        textarea {
+            resize: none;
+            height: 120px;
+        }
+        /* BUTTON */
+        
+        .btn {
+            background: rgb(158, 41, 41);
+            color: white;
+            border: none;
+            padding: 12px;
+            border-radius: 6px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+        
+        .btn:hover {
+            background: #c62d2d;
+            transform: scale(1.03);
+        }
+        /* MAP BOX */
+        
+        .map-box {
+            background: white;
+            padding: 10px;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            width: 450px;
+        }
+        
+        .map-box iframe {
+            width: 100%;
+            height: 350px;
+            border-radius: 12px;
+            border: none;
+        }
+        /* INFO SECTION */
+        
+        .info-box {
+            max-width: 1100px;
+            margin: auto;
+            padding: 1rem;
+            padding-bottom: 2rem;
+        }
+        
+        .info-box h2 {
+            color: rgb(158, 41, 41);
+        }
+        
+        .info-box p {
+            font-size: 1rem;
+            margin: 5px 0;
+        }
+        /* FOOTER */
+        
+        footer {
+            background: rgb(158, 41, 41);
+            color: white;
+            padding: 12px;
+            text-align: center;
+            font-size: 0.95rem;
+            font-weight: 500;
+        }
+        /* mobile me break allow */
+        
+        i {
+            color: rgb(158, 41, 41);
+            font-size: 20px;
+            margin-right: 8px;
+        }
+        /* RESPONSIVE */
+        
+        @media (max-width: 768px) {
+            body {
+                background: #fff9cc;
+                color: #333;
+            }
+            section {
+                flex-direction: column;
+            }
+            form,
+            .map-box {
+                width: 100%;
+            }
+            header h1 {
+                font-size: 1.5rem;
+            }
+            footer {
+                white-space: nowrap;
+                overflow-x: auto;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <button class="menu-btn" id="menuBtn">☰</button>
+        <div>
+            <h1>Contact Us</h1>
+            <h4>Get in Touch with Us</h4>
+        </div>
+        <div class="drawer" id="navMenu">
+            <nav class="nav">
+                <img class="drawer-img" src="only_logo.png" src="logo">
+                <a href="home.html">Home</a>
+                <a href="aboutus.html">About</a>
+                <a href="register.html">Register</a>
+                <a href="contact.html" class="active">Contact</a>
+            </nav>
+        </div>
+    </header>
+    <main>
+        <section>
+            <form id="conForm">
+                <h3>Get in Touch</h3>
+                <p>Have any Questions? We'd love to hear from you!</p>
+                <div>
+                    <input type="text" name="name" placeholder="Your Name" required>
+                    <input type="email" name="email" placeholder="Your Email" required>
+                    <input type="number" name="phone" placeholder="Your Phone Number" required>
+                    <textarea row="30" name="message" column="50" placeholder="Your Message" required></textarea>
+                    <input type="submit" class="btn" value="Send Message">
+                </div>
+            </form>
+            <div>
+                <h2 style="color: rgb(158, 41, 41);"> <i class="fa-solid fa-location-dot"></i> Our Location</h2>
+                <div class="map-box">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3503.742144190568!2d77.45153337620924!3d28.577504786576107!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390cefde25e08279%3A0x4f5def2b1736f13d!2sBajrang%20International%20School!5e0!3m2!1sen!2sin!4v1769655048340!5m2!1sen!2sin"></iframe>
+                </div>
+            </div>
+        </section>
+        <div class="info-box">
+            <h2>Our Info</h2>
+            <p><i class="fa-solid fa-phone"></i> Call: 9870261060, 9217521060</p>
+            <p><i class="fa-solid fa-envelope"></i> Email: bajrangschool.enquiry@gmail.com</p>
+            <p><i class="fa-solid fa-clock"></i> Working Hours: Mon–Sat: 9:00AM – 5:00PM</p>
+        </div>
+
+    </main>
+    <footer>
+        <span>Visit Us Today!</span>
+        <span>|</span>
+        <span>Sector 2, Greater Noida</span>
+        <span>|</span>
+        <span>Mon–Sat: 9:00AM – 5:00PM</span>
+    </footer>
+    <script src="contact.js">
+    </script>
+</body>
+
+</html>
