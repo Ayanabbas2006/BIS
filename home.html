@@ -1,320 +1,376 @@
 <!DOCTYPE html>
 <meta charset="UTF-8">
 <html lang="en">
->
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Bajrang International School</title>
 
-<style>
-    * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-        font-family: Arial, sans-serif;
-    }
-    
-    body {
-        background: #f2f4f8;
-    }
-    /* HEADER */
-    
-    header {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 4rem;
-        display: flex;
-        align-items: center;
-        padding: 0 1rem;
-        background: #fff;
-        z-index: 1000;
-        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    }
-    
-    .header-left {
-        display: flex;
-        align-items: center;
-        gap: 12px;
-    }
-    
-    .menu-btn {
-        font-size: 1.8rem;
-        background: none;
-        border: none;
-        color: rgb(119, 43, 43);
-        cursor: pointer;
-    }
-    
-    header img {
-        height: 40px
-    }
-    /* DRAWER */
-    
-    .drawer-img {
-        height: 100px;
-        width: auto;
-        display: block;
-        margin: 0 auto 1rem;
-    }
-    
-    .drawer {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 260px;
-        height: 100vh;
-        background: rgb(119, 43, 43);
-        transform: translateX(-100%);
-        transition: 0.3s ease;
-        z-index: 1001;
-    }
-    
-    .drawer.open {
-        transform: translateX(0)
-    }
-    
-    .nav {
-        display: flex;
-        flex-direction: column;
-        padding-top: 2rem;
-    }
-    
-    .nav a {
-        color: white;
-        text-decoration: none;
-        padding: 1rem;
-        text-align: center;
-        border-top: 1px solid rgba(255, 255, 255, 0.3);
-    }
-    
-    .nav .active {
-        color: rgb(82, 31, 31);
-        background-color: rgb(205, 205, 205);
-    }
-    
-    .nav a:hover {
-        color: white;
-        background-color: rgb(77, 29, 29);
-    }
-    /* MAIN */
-    
-    .body {
-        position: relative;
-        padding-top: 4rem;
-        overflow-y: auto;
-    }
-    /* HERO */
-    
-    .hero {
-        min-height: 420px;
-        background: url("school.jpeg") center/cover no-repeat;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        padding: 2rem 1rem;
-    }
-    
-    .heading {
-        padding: 1.5rem;
-    }
-    
-    .cta {
-        text-align: center;
-        max-width: 600px;
-        background: rgba(0, 0, 0, 0.45);
-        padding: 2rem;
-        border-radius: 12px;
-        color: white;
-    }
-    
-    .ctabtn {
-        background: rgb(119, 43, 43);
-        color: white;
-        border: none;
-        padding: 1rem 2rem;
-        font-size: 1.1rem;
-        border-radius: 6px;
-        cursor: pointer;
-    }
-    /* FEATURES */
-    
-    .info {
-        background: rgb(119, 43, 43);
-        padding: 2rem 1rem;
-    }
-    
-    .feature-grid {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 16px;
-    }
-    /* FEATURE CARDS */
-    
-    .feature-card {
-        aspect-ratio: 1/1;
-        border-radius: 14px;
-        display: flex;
-        flex-direction: column;
-        overflow: hidden;
-        /* important to crop images */
-        cursor: pointer;
-        transition: 0.3s;
-        max-width: 400px;
-        margin: 0 auto;
-    }
-    
-    span {
-        color: white;
-    }
-    
-    .feature-card:hover {
-        transform: scale(1.05);
-        box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
-    }
-    
-    .feature-card img {
-        width: 100%;
-        height: 100%;
-        background-color: rgb(119, 43, 43);
-        object-fit: cover;
-        border-top-left-radius: 14px;
-        border-top-right-radius: 14px;
-    }
-    
-    .feature-card span {
-        flex: 1;
-        display: flex;
-        background-color: rgb(20, 70, 39);
-        align-items: center;
-        justify-content: center;
-        font-weight: bold;
-        font-size: 1rem;
-        padding: 0.5rem;
-        text-align: center;
-    }
-    /* TEXT */
-    
-    .text,
-    .about {
-        background: rgb(119, 43, 43);
-        color: white;
-        padding: 2rem 1rem;
-        text-align: center;
-    }
-    /* ===================== */
-    /* CAROUSEL – FIXED */
-    /* ===================== */
-    
-    .carousel {
-        display: flex;
-        gap: 24px;
-        padding: 50px 10px;
-        /* reduce side padding */
-        overflow-x: auto;
-        background: rgb(119, 43, 43);
-        scroll-snap-type: x mandatory;
-        scroll-behavior: smooth;
-        cursor: grab;
-        scrollbar-color: rgb(119, 43, 43);
-        /* show grab on desktop */
-    }
-    
-    .carousel:active {
-        cursor: grabbing;
-    }
-    
-    .carousel .card {
-        flex: 0 0 auto;
-        width: 360px;
-        height: 360px;
-        border-radius: 16px;
-        opacity: 1;
-        transform: scale(0.85);
-        transition: 0.4s ease;
-        scroll-snap-align: center;
-        user-select: none;
-        scrollbar-color: rgb(119, 43, 43);
-        /* prevent text/image selection while dragging */
-    }
-    
-    .carousel img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        border-radius: 16px;
-        display: block;
-    }
-    /* ===================== */
-    /* MOBILE FIX */
-    /* ===================== */
-    
-    @media(max-width:768px) {
-        .feature-grid {
-            grid-template-columns: 1fr;
+<head>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bajrang International School</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
         }
-        feature-card span {
-            background-color: rgb(20, 70, 39);
+        
+        body {
+            background: #f2f4f8;
+        }
+        /* HEADER */
+        
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4rem;
+            display: flex;
+            align-items: center;
+            padding: 0 1rem;
+            background: #fff;
+            z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        .menu-btn {
+            font-size: 1.8rem;
+            background: none;
+            border: none;
+            color: rgb(119, 43, 43);
+            cursor: pointer;
+        }
+        
+        header img {
+            height: 40px
+        }
+        /* DRAWER */
+        
+        .drawer-img {
+            height: 100px;
+            width: auto;
+            display: block;
+            margin: 0 auto 1rem;
+        }
+        
+        .drawer {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 260px;
+            height: 100vh;
+            background: rgb(119, 43, 43);
+            transform: translateX(-100%);
+            transition: 0.3s ease;
+            z-index: 1001;
+        }
+        
+        .drawer.open {
+            transform: translateX(0)
+        }
+        
+        .nav {
+            display: flex;
+            flex-direction: column;
+            padding-top: 2rem;
+        }
+        
+        .nav a {
+            color: white;
+            text-decoration: none;
+            padding: 1rem;
+            text-align: center;
+            border-top: 1px solid rgba(255, 255, 255, 0.3);
+        }
+        
+        .nav .active {
+            color: rgb(82, 31, 31);
+            background-color: rgb(205, 205, 205);
+        }
+        
+        .nav a:hover {
+            color: white;
+            background-color: rgb(77, 29, 29);
+        }
+        /* MAIN */
+        
+        .body {
+            position: relative;
+            padding-top: 4rem;
+            overflow-y: auto;
+        }
+        /* HERO */
+        
+        .hero {
+            min-height: 780px;
+            background: url("img-vid/real_school\ \(1\).jpeg") center/cover no-repeat;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem 1rem;
+        }
+        
+        .heading {
+            padding: 1.5rem;
+        }
+        
+        .cta {
+            text-align: center;
+            max-width: 600px;
+            background: rgba(0, 0, 0, 0.45);
+            padding: 2rem;
+            border-radius: 12px;
+            color: white;
+        }
+        
+        .ctabtn {
+            background: rgb(119, 43, 43);
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            font-size: 1.1rem;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+        /* FEATURES */
+        
+        .info {
+            background: rgb(119, 43, 43);
+            padding: 2rem 1rem;
+        }
+        
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
         }
         /* FEATURE CARDS */
+        
         .feature-card {
-            background: rgb(20, 70, 39);
             aspect-ratio: 1/1;
             border-radius: 14px;
             display: flex;
             flex-direction: column;
-            /* stack image + text */
+            overflow: hidden;
+            /* important to crop images */
+            cursor: pointer;
+            transition: 0.3s;
+            max-width: 400px;
+            margin: 0 auto;
+        }
+        
+        span {
+            color: white;
+        }
+        
+        .feature-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
+        }
+        
+        .feature-card img {
+            width: 100%;
+            height: 100%;
+            background-color: rgb(119, 43, 43);
+            object-fit: cover;
+            border-top-left-radius: 14px;
+            border-top-right-radius: 14px;
+        }
+        
+        .feature-card span {
+            flex: 1;
+            display: flex;
+            background-color: rgb(20, 70, 39);
             align-items: center;
             justify-content: center;
             font-weight: bold;
-            transition: 0.3s;
-            overflow: hidden;
-            /* important to crop images */
+            font-size: 1rem;
+            padding: 0.5rem;
             text-align: center;
         }
-        .feature-card img {
-            width: 100%;
-            /* smaller to fit nicely */
-            height: 100%;
-            object-fit: cover;
-            border-radius: 12px;
-            margin-bottom: 8px;
+        /* TEXT */
+        
+        .text,
+        .about {
+            background: rgb(119, 43, 43);
+            color: white;
+            padding: 2rem 1rem;
+            text-align: center;
         }
-        /* CAROUSEL CARDS (already mostly correct) */
-        .carousel .card img {
+        /* ===================== */
+        /* CAROUSEL – FIXED */
+        /* ===================== */
+        /* ===================== */
+        /* PRO 3D CAROUSEL */
+        /* ===================== */
+        
+        .carousel-container {
+            position: relative;
             width: 100%;
-            height: 100%;
-            object-fit: cover;
-            border-radius: 16px;
-            display: block;
+            background: rgb(119, 43, 43);
+            padding: 50px 0;
+            overflow: hidden;
         }
+        
         .carousel {
-            padding: 30px 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            transition: 0.4s ease;
+            touch-action: pan-y;
         }
+        /* Cards */
+        
         .carousel .card {
-            width: 240px;
-            height: 240px;
-            opacity: 1;
-            transform: scale(1);
+            min-width: 260px;
+            height: 200px;
+            margin: 0 14px;
+            border-radius: 14px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+            transition: 0.4s;
+            transform: scale(0.7);
+            filter: blur(2px);
+            opacity: 0.6;
         }
+        /* Images */
+        
+        .carousel img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        /* Active Center Card */
+        
         .carousel .card.active {
-            transform: scale(1);
-        }
-    }
-    
-    @media(min-width:768px) {
-        .carousel .card.active {
+            transform: scale(1.25);
+            filter: blur(0);
             opacity: 1;
-            transform: scale(1);
+            z-index: 10;
         }
-        .carousel .card {
-            width: 240px;
-            height: 240px;
-            opacity: 1;
-            transform: scale(1);
+        /* Buttons */
+        
+        .slide-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0, 0, 0, 0.6);
+            color: white;
+            border: none;
+            font-size: 28px;
+            padding: 10px 15px;
+            cursor: pointer;
+            border-radius: 50%;
+            z-index: 20;
         }
-    }
-</style>
+        
+        .prev {
+            left: 10px;
+        }
+        
+        .next {
+            right: 10px;
+        }
+        /* Dots */
+        
+        .dots {
+            text-align: center;
+            margin-top: 15px;
+            padding-top: 2rem;
+        }
+        
+        .dot {
+            height: 10px;
+            width: 10px;
+            background: #6c6a6a;
+            display: inline-block;
+            border-radius: 50%;
+            margin: 5px;
+            cursor: pointer;
+        }
+        
+        .dot.active {
+            background: white;
+        }
+        /* ===================== */
+        /* MOBILE FIX */
+        /* ===================== */
+        
+        @media(max-width:768px) {
+            .feature-grid {
+                grid-template-columns: 1fr;
+            }
+            feature-card span {
+                background-color: rgb(20, 70, 39);
+            }
+            /* FEATURE CARDS */
+            .feature-card {
+                background: rgb(20, 70, 39);
+                aspect-ratio: 1/1;
+                border-radius: 14px;
+                display: flex;
+                flex-direction: column;
+                /* stack image + text */
+                align-items: center;
+                justify-content: center;
+                font-weight: bold;
+                transition: 0.3s;
+                overflow: hidden;
+                /* important to crop images */
+                text-align: center;
+            }
+            .feature-card img {
+                width: 100%;
+                /* smaller to fit nicely */
+                height: 100%;
+                object-fit: cover;
+                border-radius: 12px;
+                margin-bottom: 8px;
+            }
+            /* CAROUSEL CARDS (already mostly correct) */
+            .carousel .card img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                border-radius: 16px;
+                display: block;
+            }
+            .carousel {
+                padding: 30px 1rem;
+            }
+            .carousel .card {
+                width: 240px;
+                height: 240px;
+                opacity: 1;
+                transform: scale(1);
+            }
+            .carousel .card.active {
+                transform: scale(1);
+            }
+            @media(min-width:768px) {
+                .carousel .card.active {
+                    opacity: 1;
+                    transform: scale(1);
+                }
+                .carousel .card {
+                    width: 240px;
+                    height: 240px;
+                    opacity: 1;
+                    transform: scale(1);
+                }
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
 </head>
 
 <body>
@@ -322,11 +378,11 @@
     <header>
         <div class="header-left">
             <button class="menu-btn" id="menuBtn">☰</button>
-            <img src="bg_removed_logo.png">
+            <img src="img-vid/bg_removed_logo.png">
         </div>
         <div class="drawer" id="navMenu">
             <nav class="nav">
-                <img class="drawer-img" src="only_logo.png" src="logo">
+                <img class="drawer-img" src="img-vid/only_logo.png" src="logo">
                 <a class="active">Home</a>
                 <a href="aboutus.html">About</a>
                 <a href="register.html">Register</a>
@@ -347,17 +403,17 @@
         <div class="info">
             <div class="feature-grid">
                 <div class="feature-card" onclick="location.href='gallery.html'">
-                    <img src="academics.webp" alt="Academics">
+                    <img src="img-vid/smart-class (1).jpeg" alt="Academics">
                     <span>Academics</span>
                 </div>
 
                 <div class="feature-card" onclick="location.href='gallery.html'">
-                    <img src="infrastructure.webp" alt="Infrastructure">
+                    <img src="img-vid/real_school2 (1).jpeg" alt="Infrastructure">
                     <span>Infrastructure</span>
                 </div>
 
                 <div class="feature-card" onclick="location.href='gallery.html'">
-                    <img src="faculty.webp" alt="Faculty">
+                    <img src="img-vid/fac.png" alt="Faculty">
                     <span>Faculty</span>
                 </div>
             </div>
@@ -368,10 +424,18 @@
             World-class education with strong values.
         </div>
 
-        <section class="carousel" id="cardTrack">
-            <div class="card"><img src="school2.jpeg"></div>
-            <div class="card"><img src="sports2.jpeg"></div>
-            <div class="card"><img src="school2.jpeg"></div>
+        <section class="carousel-container">
+            <button class="slide-btn prev">❮</button>
+            <div class="carousel" id="cardTrack">
+                <div class="card active"><img src="img-vid/real_school (1).jpeg"></div>
+                <div class="card"><img src="img-vid/smart-class (1).jpeg"></div>
+                <div class="card"><img src="img-vid/playground (1).jpeg"></div>
+                <div class="card"><img src="img-vid/fac.png"></div>
+                <div class="card"><img src="img-vid//sports2.jpeg"></div>
+                <div class="card"><img src="img-vid/school5.jpeg"></div>
+            </div>
+            <button class="slide-btn next">❯</button>
+            <div class="dots" id="dots"></div>
         </section>
 
         <div class="about" id="about">
@@ -390,62 +454,90 @@
                 menu.classList.remove("open");
             }
         });
-        // Update active card based on center
+
         const track = document.getElementById("cardTrack");
         const cards = document.querySelectorAll(".carousel .card");
+        const prevBtn = document.querySelector(".prev");
+        const nextBtn = document.querySelector(".next");
+        const dotsContainer = document.getElementById("dots");
 
-        function updateActiveCard() {
-            const center = track.scrollLeft + track.offsetWidth / 2;
-            let closest = null;
-            let min = Infinity;
+        let index = 0;
+        let startX = 0;
+        let isDown = false;
+        const cardGap = 288; // card width + margin
 
-            cards.forEach(card => {
-                const cardCenter = card.offsetLeft + card.offsetWidth / 2;
-                const dist = Math.abs(center - cardCenter);
-                if (dist < min) {
-                    min = dist;
-                    closest = card;
-                }
-            });
+        /* Create dots */
+        cards.forEach((_, i) => {
+            const dot = document.createElement("span");
+            dot.className = "dot";
+            if (i === 0) dot.classList.add("active");
+            dot.onclick = () => goToSlide(i);
+            dotsContainer.appendChild(dot);
+        });
+        const dots = document.querySelectorAll(".dot");
 
+        /* Update UI */
+        function update() {
             cards.forEach(c => c.classList.remove("active"));
-            if (closest) closest.classList.add("active");
+            cards[index].classList.add("active");
+
+            const container = document.querySelector(".carousel-container");
+            const cardWidth = cards[0].offsetWidth + 28; // width + margin
+            const containerWidth = container.offsetWidth;
+
+            const centerOffset = (containerWidth / 2) - (cardWidth / 2);
+            const translateX = centerOffset - (index * cardWidth);
+
+            track.style.transform = `translateX(${translateX}px)`;
+
+            dots.forEach(d => d.classList.remove("active"));
+            dots[index].classList.add("active");
         }
 
-        // Mouse drag support for desktop
-        let isDown = false;
-        let startX;
-        let scrollLeft;
 
-        track.addEventListener("mousedown", (e) => {
+        /* Go Slide */
+        function goToSlide(i) {
+            index = i;
+            update();
+        }
+
+        /* Buttons */
+        nextBtn.onclick = () => {
+            index = (index + 1) % cards.length;
+            update();
+        };
+        prevBtn.onclick = () => {
+            index = (index - 1 + cards.length) % cards.length;
+            update();
+        };
+
+        /* Auto Slide */
+        setInterval(() => nextBtn.click(), 5000);
+
+        /* Touch Swipe */
+        track.addEventListener("touchstart", e => {
+            startX = e.touches[0].clientX;
+        });
+        track.addEventListener("touchend", e => {
+            let endX = e.changedTouches[0].clientX;
+            if (startX - endX > 50) nextBtn.click();
+            if (endX - startX > 50) prevBtn.click();
+        });
+
+        /* Mouse Drag */
+        track.addEventListener("mousedown", e => {
             isDown = true;
-            track.classList.add("active");
-            startX = e.pageX - track.offsetLeft;
-            scrollLeft = track.scrollLeft;
+            startX = e.clientX;
         });
-        track.addEventListener("mouseleave", () => {
-            isDown = false;
-            track.classList.remove("active");
-        });
-        track.addEventListener("mouseup", () => {
-            isDown = false;
-            track.classList.remove("active");
-        });
-        track.addEventListener("mousemove", (e) => {
+        document.addEventListener("mouseup", e => {
             if (!isDown) return;
-            e.preventDefault();
-            const x = e.pageX - track.offsetLeft;
-            const walk = (x - startX) * 1; // scroll-fast multiplier
-            track.scrollLeft = scrollLeft - walk;
+            isDown = false;
+            let endX = e.clientX;
+            if (startX - endX > 50) nextBtn.click();
+            if (endX - startX > 50) prevBtn.click();
         });
-
-        // Update active on scroll
-        track.addEventListener("scroll", () => {
-            requestAnimationFrame(updateActiveCard);
-        });
-
-        updateActiveCard();
     </script>
+
 
 </body>
 
