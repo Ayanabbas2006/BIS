@@ -3,6 +3,7 @@
 <html lang="en">
 
 <head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -80,6 +81,12 @@
             z-index: 1001;
         }
         
+        i {
+            color: rgb(255, 255, 255);
+            font-size: 20px;
+            margin-right: 8px;
+        }
+        
         .drawer.open {
             transform: translateX(0)
         }
@@ -140,13 +147,20 @@
         }
         
         .ctabtn {
-            background: rgb(119, 43, 43);
+            background: linear-gradient(345deg, rgb(119, 43, 43), #0a0b0a);
             color: white;
             border: none;
             padding: 1rem 2rem;
             font-size: 1.1rem;
             border-radius: 6px;
             cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .ctabtn:hover {
+            transform: scale(1.05);
+            background: linear-gradient(110deg, #822d2d, rgb(36, 10, 10));
+            box-shadow: 0 12px 30px rgba(255, 255, 255, 0.35);
         }
         /* FEATURES */
         
@@ -216,6 +230,50 @@
             color: white;
             padding: 2rem 1rem;
             text-align: center;
+        }
+        
+        i {
+            color: rgb(255, 255, 255);
+            font-size: 20px;
+            margin-right: 8px;
+        }
+        /* Wrapper below navbar */
+        
+        .smp-wrapper {
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+            padding: 1.8rem 1rem;
+            background: rgb(137, 45, 45);
+            /* School theme red */
+            width: 100%;
+            text-align: center;
+            color: white;
+            font-size: 0.75rem;
+            backdrop-filter: blur(4px);
+        }
+        /* Text inside */
+        
+        .smp-wrapper p {
+            margin: 0;
+            color: white;
+            font-weight: 500;
+        }
+        /* Button */
+        
+        .smpbtn {
+            background: white;
+            color: rgb(137, 45, 45);
+            border: none;
+            padding: 0.5rem 1.3rem;
+            font-size: 0.95rem;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: 600;
+        }
+        
+        .smpbtn:hover {
+            background: #ffdede;
         }
         /* ===================== */
         /* CAROUSEL – FIXED */
@@ -366,7 +424,7 @@
         }
         
         footer {
-            background: rgb(255, 255, 255);
+            background: rgb(119, 43, 43);
             padding: 12px;
             text-align: center;
             font-size: 0.95rem;
@@ -379,15 +437,40 @@
         }
         /* mobile me break allow */
         
-        i {
-            color: rgb(119, 43, 43);
-            font-size: 20px;
-            margin-right: 8px;
-        }
-        
         .link {
             text-decoration: none;
             color: rgb(0, 136, 255);
+        }
+        
+        .Number {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.7rem;
+            padding: 1rem 1.5rem;
+            background: linear-gradient(35deg, #37423b, #128c61);
+            color: white;
+            font-size: 1.1rem;
+            font-weight: 600;
+            border-radius: 12px;
+            width: fit-content;
+            margin: 2rem auto;
+            cursor: pointer;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+        
+        .Number:hover {
+            transform: scale(1.05);
+            background: linear-gradient(345deg, #37423b, #0d9c54);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
+        }
+        /* WhatsApp Icon */
+        
+        .Number img {
+            width: 26px;
+            height: 26px;
         }
         /* ===================== */
         /* MOBILE FIX */
@@ -444,17 +527,18 @@
             .carousel .card.active {
                 transform: scale(1);
             }
-            @media(min-width:768px) {
-                .carousel .card.active {
-                    opacity: 1;
-                    transform: scale(1);
-                }
-                .carousel .card {
-                    width: 240px;
-                    height: 240px;
-                    opacity: 1;
-                    transform: scale(1);
-                }
+        }
+        
+        @media(min-width:768px) {
+            .carousel .card.active {
+                opacity: 1;
+                transform: scale(1);
+            }
+            .carousel .card {
+                width: 240px;
+                height: 240px;
+                opacity: 1;
+                transform: scale(1);
             }
         }
     </style>
@@ -477,6 +561,14 @@
                 <a href="register.html">Register</a>
                 <a href="contact.html">Contact</a>
             </nav>
+            <div class="smp-wrapper">
+                <h4 style="color: white;">Contact info:</h4>
+                <p><i class="fa-solid fa-location-dot"></i>Patwari, Secotr-62, Greater Noida West UP (203027)</p>
+                <p><i class="fa-solid fa-envelope"></i>Bajrangshool.enquiry@gmail.com</p>
+                <p><i class="fa-solid fa-clock"></i>Mon-Fri: 9am-5pm</p>
+                <p><i class="fa-brands fa-whatsapp"></i>+91-9870261060</p>
+                <p><a href="register.html" class="smpbtn">Register NOW</a></p>
+            </div>
         </div>
     </header>
 
@@ -531,6 +623,9 @@
             <h1>About Us</h1>
             <p>At Bajrang International School, we believe that every child is gifted with unique abilities waiting to be nurtured. Our mission is to create a joyful, safe, and inspiring learning environment where children grow academically, emotionally,
                 and socially. With a balanced blend of modern education and strong traditional values, we shape young learners into confident, responsible, and compassionate individuals.</p>
+        </div>
+        <div class="Number">
+            <span><p><i class="fa-brands fa-whatsapp"></i>Whatsapp Us at:<a href="https://wa.me/+919870261060" class="link"> 9870261060</a></p></span>
         </div>
         <div class="notice-wrapper">
             <div class="notice">

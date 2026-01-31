@@ -2,6 +2,7 @@
 <html lang="en">
 
 <head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gallery - Bajrang International School</title>
@@ -118,6 +119,47 @@
             color: white;
             background-color: rgb(77, 29, 29);
         }
+        
+        .smp-wrapper {
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+            padding: 1.8rem 1rem;
+            background: rgba(137, 45, 45, 0.95);
+            /* School theme red */
+            width: 100%;
+            text-align: center;
+            color: white;
+            font-size: 0.75rem;
+            backdrop-filter: blur(4px);
+        }
+        /* Text inside */
+        
+        .smp-wrapper p {
+            margin: 0;
+            color: white;
+            font-weight: 500;
+        }
+        /* Button */
+        
+        .smpbtn {
+            background: white;
+            color: rgb(137, 45, 45);
+            border: none;
+            padding: 0.5rem 1.3rem;
+            font-size: 0.95rem;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: 600;
+        }
+        
+        .smpbtn:hover {
+            background: #ffdede;
+        }
+        
+        .i {
+            color: white;
+        }
         /* SECTION TITLE */
         
         main {
@@ -220,6 +262,14 @@
                 <a href="register.html">Register</a>
                 <a href="contact.html">Contact</a>
             </nav>
+            <div class="smp-wrapper">
+                <h4 style="color: white;">Contact info:</h4>
+                <p><i class="fa-solid fa-location-dot"></i>Patwari, Secotr-62, Greater Noida West UP (203027)</p>
+                <p><i class="fa-solid fa-envelope"></i>Bajrangshool.enquiry@gmail.com</p>
+                <p><i class="fa-solid fa-clock"></i>Mon-Fri: 9am-5pm</p>
+                <p><i class="fa-brands fa-whatsapp"></i>+91-9870261060</p>
+                <p><a href="register.html" class="smpbtn">Register NOW</a></p>
+            </div>
         </div>
     </header>
     <main>

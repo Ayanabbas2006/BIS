@@ -88,6 +88,54 @@
             background-color: rgb(77, 29, 29);
         }
         
+        i {
+            color: rgb(255, 255, 255);
+            font-size: 20px;
+            margin-right: 8px;
+        }
+        /* Wrapper below navbar */
+        
+        .smp-wrapper {
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+            padding: 1.8rem 1rem;
+            background: rgba(137, 45, 45, 0.95);
+            /* School theme red */
+            width: 100%;
+            text-align: center;
+            color: white;
+            font-size: 0.75rem;
+            backdrop-filter: blur(4px);
+        }
+        /* Text inside */
+        
+        .smp-wrapper p {
+            margin: 0;
+            color: white;
+            font-weight: 500;
+        }
+        /* Button */
+        
+        .smpbtn {
+            background: white;
+            color: rgb(137, 45, 45);
+            border: none;
+            padding: 0.5rem 1.3rem;
+            font-size: 0.95rem;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: 600;
+        }
+        
+        .smpbtn:hover {
+            background: #ffdede;
+        }
+        
+        .i {
+            color: white;
+        }
+        
         header {
             display: flex;
             background: rgb(158, 41, 41);
@@ -182,7 +230,7 @@
         }
         
         .btn:hover {
-            background: #c62d2d;
+            background: rgb(119, 43, 43);
             transform: scale(1.03);
         }
         /* MAP BOX */
@@ -280,6 +328,14 @@
                 <a href="register.html">Register</a>
                 <a href="contact.html" class="active">Contact</a>
             </nav>
+            <div class="smp-wrapper">
+                <h4 style="color: white;">Contact info:</h4>
+                <p><i class="fa-solid fa-location-dot i"></i>Patwari, Secotr-62, Greater Noida West UP (203027)</p>
+                <p><i class="fa-solid fa-envelope i"></i>Bajrangshool.enquiry@gmail.com</p>
+                <p><i class="fa-solid fa-clock i"></i>Mon-Fri: 9am-5pm</p>
+                <p><i class="fa-brands fa-whatsapp i"></i>+91-9870261060</p>
+                <p><a href="register.html" class="smpbtn">Register NOW</a></p>
+            </div>
         </div>
     </header>
     <main>
