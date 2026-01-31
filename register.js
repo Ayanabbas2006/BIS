@@ -20,7 +20,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 alert("Registration successful!");
                 form.reset();
             } else {
-                alert("Error: " + JSON.stringify(result));
+                alert(result);
             }
         } catch (err) {
             alert("err" + err);
