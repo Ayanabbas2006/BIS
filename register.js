@@ -23,7 +23,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 alert("Error: " + JSON.stringify(result));
             }
         } catch (err) {
-            alert("" + err);
+            alert("err" + err);
         }
     });
 
