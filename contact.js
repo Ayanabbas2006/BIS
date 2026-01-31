@@ -18,7 +18,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 alert("Sent successful!");
                 form.reset();
             } else {
-                alert("Error: " + JSON.stringify(result));
+                alert(result.detail);
             }
         } catch (err) {
             alert("" + err);
